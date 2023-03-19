@@ -1,0 +1,60 @@
+@import '../../settings';
+
+.column {
+    flex: 0 0 auto;
+    width: 300px;
+    height: calc(100% - #{$gap});
+    // margin-left: 10px;
+
+    > * {
+      background-color: $list-bg-color;
+      color: #333;
+      padding: 0 8px;
+    }
+    header {
+      padding-left: 15px;
+      height: $column-header-height;
+      line-height: $column-header-height;
+      font-size: 16px;
+      font-weight: bold;
+      border-top-left-radius: $column-border-radius;
+      border-top-right-radius: $column-border-radius;
+    }
+
+    h1 {
+      padding-left: 15px;
+      margin: 0;
+      height: $column-h1-height;
+      line-height: $column-h1-height;
+      font-size: 35px;
+      font-weight: bold;
+    }
+
+    h2 {
+      padding-left: 15px;
+      margin: 0;
+      height: $column-h1-height;
+      line-height: $column-h1-height;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    footer {
+      padding-left: 15px;
+      height: $column-footer-height;
+      line-height: $column-footer-height;
+      border-bottom-left-radius: $column-border-radius;
+      border-bottom-right-radius: $column-border-radius;
+    }
+
+    ul.card-list {
+      list-style-type: none;
+      margin: 0;
+      max-height: calc(100% - #{$column-header-height} - #{$column-h1-height} - #{$column-footer-height});
+      overflow-y: auto;
+
+      // &::-webkit-scrollbar {
+      //   -webkit-appearance: none;
+      // }
+    }
+  }
