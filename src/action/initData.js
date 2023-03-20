@@ -11,8 +11,8 @@ export const initData = {
                 boardId: 'board-1',
                 header: 'Путь героя воглера',
                 title: 'title-1',
-                subtitleFirst: 'Конфликт',
-                subtitleSecond: 'Эмоциональный фон',
+                // subtitleFirst: 'Конфликт',
+                // subtitleSecond: 'Эмоциональный фон',
                 cardOrder: ['card-7', 'card-2', 'card-3', 'card-4', 'card-5', 'card-6', 'card-1'],
                 cards: [
                     {
@@ -63,6 +63,27 @@ export const initData = {
                         columnId: 'column-1',
                         title: 'titleOfCard-7',
                         image: null
+                    },
+                    {
+                        id: 'card-8',
+                        boardId: 'board-1',
+                        columnId: 'column-1',
+                        title: 'titleOfCard-7',
+                        image: null
+                    },
+                    {
+                        id: 'card-9',
+                        boardId: 'board-1',
+                        columnId: 'column-1',
+                        title: 'titleOfCard-7',
+                        image: null
+                    },
+                    {
+                        id: 'card-10',
+                        boardId: 'board-1',
+                        columnId: 'column-1',
+                        title: 'titleOfCard-7',
+                        image: null
                     }
                 ]
             },
@@ -72,8 +93,8 @@ export const initData = {
                 boardId: 'board-1',
                 header: 'Путь героя воглера',
                 title: 'title-2',
-                subtitleFirst: 'Конфликт',
-                subtitleSecond: 'Эмоциональный фон',
+                // subtitleFirst: 'Конфликт',
+                // subtitleSecond: 'Эмоциональный фон',
                 cardOrder: ['card-8', 'card-9', 'card-10'],
                 cards: [
                     {
@@ -105,8 +126,8 @@ export const initData = {
                 boardId: 'board-1',
                 header: 'Путь героя воглера',
                 title: 'title-3',
-                subtitleFirst: 'Конфликт',
-                subtitleSecond: 'Эмоциональный фон',
+                // subtitleFirst: 'Конфликт',
+                // subtitleSecond: 'Эмоциональный фон',
                 cardOrder: ['card-11', 'card-12', 'card-13'],
                 cards: [
                     {
