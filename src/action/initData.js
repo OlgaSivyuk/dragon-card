@@ -65,24 +65,24 @@ export const initData = {
                         image: null
                     },
                     {
-                        id: 'card-8',
+                        id: 'card-14',
                         boardId: 'board-1',
                         columnId: 'column-1',
-                        title: 'titleOfCard-7',
+                        title: 'titleOfCard-14',
                         image: null
                     },
                     {
-                        id: 'card-9',
+                        id: 'card-15',
                         boardId: 'board-1',
                         columnId: 'column-1',
-                        title: 'titleOfCard-7',
+                        title: 'titleOfCard-15',
                         image: null
                     },
                     {
-                        id: 'card-10',
+                        id: 'card-16',
                         boardId: 'board-1',
                         columnId: 'column-1',
-                        title: 'titleOfCard-7',
+                        title: 'titleOfCard-16',
                         image: null
                     }
                 ]

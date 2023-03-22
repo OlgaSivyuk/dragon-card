@@ -6,51 +6,55 @@ import { Container, Draggable } from "react-smooth-dnd";
 
 function Column(props) {
 
-  const {column} = props;
+  const {column, onCardDrop} = props;
   // const cards = column.cards;
   const cards = mapOrder(column.cards, column.cardOrder, 'id');
-  function onCardDrop(dropResult){
-    console.log(">>>> inside onCardDrop", dropResult)
-  }
+
+  // function onCardDrop(dropResult, columnId){
+  //   if(dropResult.removedIndex !== null || dropResult.addedIndex !== null) {
+  //     console.log(">>>> inside onCardDrop", dropResult, "with columnId", columnId)
+  //   }
+  // }
 
   return (
     <>
-        <div className="column">
-          <header className="column-drag-handle">{column.header}</header>
-          <h1>{column.title}</h1>
-          <div className="card-list">
-            <Container
-                    onDrop={onCardDrop}
-                    getChildPayload={index => cards[index]}
-                    dragClass="card-ghost"
-                    dropClass="card-ghost-drop"
-                    groupName="col"
-                    dropPlaceholder={{                      
-                      animationDuration: 150,
-                      showOnTop: true,
-                      className: 'card-drop-preview' 
-                    }}
-                    dropPlaceholderAnimationDuration={200}
-                  >
-
-
-            { cards && cards.length > 0 && cards.map((card, index) => {
-              return (
-                <Draggable key={card.id}>
-                <Card 
-                  card={card}
-                />
-                </Draggable>
-              )
-            }) }
-
-            </Container>
-          </div>
-          <footer>Add another card</footer>
+      <div className="column">
+        <header className="column-drag-handle">{column.header}</header>
+        <h1>{column.title}</h1>
+        <div className="card-list">
+          <Container
+            onDrop={(dropResult) => onCardDrop(dropResult, column.id)}
+            getChildPayload={(index) => cards[index]}
+            dragClass="card-ghost"
+            dropClass="card-ghost-drop"
+            groupName="col"
+            dropPlaceholder={{
+              animationDuration: 150,
+              showOnTop: true,
+              className: "card-drop-preview",
+            }}
+            dropPlaceholderAnimationDuration={200}
+          >
+            {cards &&
+              cards.length > 0 &&
+              cards.map((card, index) => {
+                return (
+                  <Draggable key={card.id}>
+                    <Card card={card} />
+                  </Draggable>
+                );
+              })}
+          </Container>
         </div>
-
+        <footer>
+          <div className='footer-action'>
+            <i className="fa fa-plus icon"></i>
+            Add another card
+          </div>
+        </footer>
+      </div>
     </>
-  )
+  );
 }
 
 export default Column
