@@ -27,6 +27,29 @@
       cursor: pointer;
     }
 
+    .column-drag-handle {
+display: flex;
+
+.column-title {
+  width: 90%;
+}
+
+.column-dropdown {
+  width: 10%;
+
+  .dropdown-toggle {
+    &::after {
+      content: '...';
+      border: none !important;
+      outline: none !important;
+      box-shadow: none !important;
+
+    }
+  }
+}
+
+    }
+
     h1 {
       padding-left: 15px;
       margin: 0;

@@ -3,6 +3,7 @@ import Card from '../Card/Card'
 import './Column.scss'
 import { mapOrder } from '../../utilites/sorts';
 import { Container, Draggable } from "react-smooth-dnd";
+import Dropdown from 'react-bootstrap/Dropdown'
 
 function Column(props) {
 
@@ -19,8 +20,27 @@ function Column(props) {
   return (
     <>
       <div className="column">
-        <header className="column-drag-handle">{column.header}</header>
-        <h1>{column.title}</h1>
+        <header className="column-drag-handle">
+          {/* {column.header} */}
+          <div className='column-title'>
+          {column.title}
+          </div>
+          <div className='column-dropdown'>
+        <Dropdown>
+            <Dropdown.Toggle variant='' id="dropdown-basic" size='sm'>
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              <Dropdown.Item href="#">Add card...</Dropdown.Item>
+              <Dropdown.Item href="#">Remove column...</Dropdown.Item>
+              <Dropdown.Item href="#">Something else</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </div>
+        </header>
+        {/* <h1>
+          {column.title}
+        </h1> */}
         <div className="card-list">
           <Container
             onDrop={(dropResult) => onCardDrop(dropResult, column.id)}
@@ -47,7 +67,7 @@ function Column(props) {
           </Container>
         </div>
         <footer>
-          <div className='footer-action'>
+          <div className="footer-action">
             <i className="fa fa-plus icon"></i>
             Add another card
           </div>
