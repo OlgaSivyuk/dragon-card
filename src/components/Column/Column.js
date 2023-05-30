@@ -1,9 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Card from '../Card/Card'
 import './Column.scss'
 import { mapOrder } from '../../utilites/sorts';
 import { Container, Draggable } from "react-smooth-dnd";
 import Dropdown from 'react-bootstrap/Dropdown'
+import ConfirmModal from '../Common/ConfirmModal';
 
 function Column(props) {
 
@@ -16,6 +17,17 @@ function Column(props) {
   //     console.log(">>>> inside onCardDrop", dropResult, "with columnId", columnId)
   //   }
   // }
+
+  const [isShowModalDelete, setShowModalDelet] = useState(false);
+
+  const toggleModal = () => {
+    setShowModalDelet(!isShowModalDelete)
+  }
+
+  const onModalAction = (type) => {
+    console.log(type);
+    toggleModal();
+  }
 
   return (
     <>
@@ -32,7 +44,7 @@ function Column(props) {
 
             <Dropdown.Menu>
               <Dropdown.Item href="#">Add card...</Dropdown.Item>
-              <Dropdown.Item href="#">Remove column...</Dropdown.Item>
+              <Dropdown.Item onClick={toggleModal}>Remove column...</Dropdown.Item>
               <Dropdown.Item href="#">Something else</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
@@ -73,6 +85,14 @@ function Column(props) {
           </div>
         </footer>
       </div>
+      <ConfirmModal
+      show={isShowModalDelete}
+      title={'Remove a column'}
+      content={`Are you shure to remove this column: <b>${column.title}<b>`}
+      onAction={onModalAction}
+
+      /> 
+      
     </>
   );
 }
