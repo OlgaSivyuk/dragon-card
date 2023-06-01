@@ -1,14 +1,17 @@
-import React, {useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import Card from '../Card/Card'
 import './Column.scss'
 import { mapOrder } from '../../utilites/sorts';
 import { Container, Draggable } from "react-smooth-dnd";
 import Dropdown from 'react-bootstrap/Dropdown'
 import ConfirmModal from '../Common/ConfirmModal';
+import Form from 'react-bootstrap/Form';
+import { MODAL_ACTION_CLOSE, MODAL_ACTION_CONFIRM } from '../../utilites/constant';
+
 
 function Column(props) {
 
-  const {column, onCardDrop} = props;
+  const {column, onCardDrop, onUpdateColumn} = props;
   // const cards = column.cards;
   const cards = mapOrder(column.cards, column.cardOrder, 'id');
 
@@ -19,6 +22,17 @@ function Column(props) {
   // }
 
   const [isShowModalDelete, setShowModalDelet] = useState(false);
+  const [titleColumn, setTitleColumn] = useState('');
+  const [isFirstClick, setFirstClick] = useState(true);
+
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (column && column.title){
+      setTitleColumn(column.title)
+    }
+
+  }, [])
 
   const toggleModal = () => {
     setShowModalDelet(!isShowModalDelete)
@@ -26,7 +40,39 @@ function Column(props) {
 
   const onModalAction = (type) => {
     console.log(type);
+    if (type ===  MODAL_ACTION_CLOSE) {
+  //do nothing
+    }
+    if (type ===  MODAL_ACTION_CONFIRM) {
+      // remove column
+      const newColumn = {
+        ...column,
+        _destroy: true
+      }
+      onUpdateColumn(newColumn)
+    }
     toggleModal();
+  }
+
+  const selectAllText = (event) => {
+    setFirstClick(false);
+    if (isFirstClick) {
+      event.target.select();
+    } else {
+      inputRef.current.setSelectionRange(titleColumn.length, titleColumn.length)
+    }
+    // event.target.focus();
+  };
+
+  const handleClickOutside = () => {
+    // do something
+    setFirstClick(true);
+    const newColumn = {
+      ...column,
+      title: titleColumn,
+      _destroy: false
+    }
+    onUpdateColumn(newColumn)
   }
 
   return (
@@ -35,7 +81,18 @@ function Column(props) {
         <header className="column-drag-handle">
           {/* {column.header} */}
           <div className='column-title'>
-          {column.title}
+          {/* {column.title} */}
+          <Form.Control 
+          size={'sm'}
+          type='text'
+          value={titleColumn}
+          className='customize-input-column'
+          onClick={selectAllText}
+          onChange={(event) => setTitleColumn(event.target.value)}
+          spellCheck='false'
+          onBlur={handleClickOutside}
+          onMouseDown={(e) => {e.preventDefault()}}
+          />
           </div>
           <div className='column-dropdown'>
         <Dropdown>
