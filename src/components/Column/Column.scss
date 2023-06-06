@@ -44,7 +44,7 @@
     padding: 2px 5px;
     border: none;
     min-height: calc(1.5em + 0.5rem + 2px);
-    
+
     &::after {
       content: '...';
       border: none !important;
@@ -83,6 +83,23 @@
       line-height: $column-h1-height;
       font-size: 20px;
       font-weight: bold;
+    }
+
+    .add-new-card {
+
+      padding-bottom: 10px;
+      .group-btn {
+        display: flex;
+        padding-top: 10px;
+        align-items: center;
+  
+        i {
+          font-size: 30px;
+          padding-left: 10px;
+          cursor: pointer;
+          color: #b3b3b3;
+        }
+      }
     }
 
     footer {

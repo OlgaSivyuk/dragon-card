@@ -148,7 +148,8 @@ console.log(columns)
                 </Draggable>
               );
             })}
-
+       </Container>
+       
           {isShowAddList === false ? (
             <div className="add-new-column" onClick={() => setIsShowAddList(true)}>
               <i className="fa fa-plus icon"></i>Add another column
@@ -168,7 +169,7 @@ console.log(columns)
               </div>
             </div>
           )}
-        </Container>
+ 
       </div>
     </>
   );
